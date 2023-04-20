@@ -110,11 +110,12 @@ type MarkdownMessage = {
 
 type ActionCardMessage = {
   actionCard: {
-    title: string;
+    title?: string;
     text: string;
     btnOrientation: string;
-    singleTitle: string;
-    singleURL: string;
+    singleTitle?: string;
+    singleURL?: string;
+    btns?: { title: string; actionURL: string }[];
   };
   msgtype: 'actionCard';
 };
