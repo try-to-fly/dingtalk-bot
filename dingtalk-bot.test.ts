@@ -1,5 +1,4 @@
-import got from 'got';
-import { DingtalkBot } from './';
+import { DingtalkBot } from './index';
 
 jest.mock('got', () => {
   return {
@@ -7,9 +6,10 @@ jest.mock('got', () => {
   };
 });
 
-const mockedPost = got.post as jest.MockedFunction<typeof got.post>;
+describe('DingtalkBot', async () => {
+  const got = await import('got').then((res) => res.default);
+  const mockedPost = got.post as jest.MockedFunction<typeof got.post>;
 
-describe('DingtalkBot', () => {
   const apiUrl = 'https://your-webhook-url';
   let dingtalkBot: DingtalkBot;
 
