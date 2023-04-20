@@ -1,5 +1,3 @@
-import got from 'got';
-
 export class DingtalkBot {
   private apiUrl: string;
 
@@ -8,6 +6,7 @@ export class DingtalkBot {
   }
 
   async sendMessage(message: DingtalkMessage): Promise<any> {
+    const got = await import('got').then((res) => res.default);
     const response = await got.post(this.apiUrl, {
       json: message,
       responseType: 'json',
